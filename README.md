@@ -1,102 +1,43 @@
+# Projeto de API em Node.js com Express, JWT e PostgreSQL
 
-## Configuração
+Este projeto é uma API construída em Node.js usando Express, JWT para autenticação e PostgreSQL para armazenamento de dados.
 
-1. Clone este repositório:
-    ```sh
-    git clone https://github.com/SEU-USUARIO/NOME-DO-REPOSITORIO.git
-    ```
+## Funcionalidades
 
-2. Navegue até o diretório do projeto:
-    ```sh
-    cd NOME-DO-REPOSITORIO
-    ```
+- Registro de usuário
+- Autenticação de usuário
+- Logout de usuário
+- Atualização de dados do usuário
+- CRUD de clientes no CRM (filtrado por usuário)
+- Rotas protegidas por autenticação
 
-3. Instale as dependências:
-    ```sh
-    npm install
-    ```
+## Tecnologias Utilizadas
 
-4. Configure o banco de dados no arquivo `.env`:
-    ```env
-    DATABASE_URL=postgres://username:password@localhost:5432/database
-    JWT_SECRET=your_jwt_secret
-    ```
+- Node.js
+- Express
+- Sequelize (ORM para PostgreSQL)
+- JWT (JSON Web Tokens)
+- Bcrypt (para hash de senhas)
+- Dotenv (para gerenciar variáveis de ambiente)
 
-5. Sincronize o banco de dados:
-    ```sh
-    npx sequelize-cli db:migrate
-    ```
+## Estrutura do Projeto
 
-6. Inicie o servidor:
-    ```sh
-    npm start
-    ```
-
-## Rotas
-
-### Registro de Usuário
-
-- **URL**: `/register`
-- **Método**: `POST`
-- **Body** (JSON):
-    ```json
-    {
-      "nome": "John Doe",
-      "email": "john@example.com",
-      "senha": "senha123",
-      "senhaRepetida": "senha123"
-    }
-    ```
-
-### Autenticação de Usuário
-
-- **URL**: `/auth`
-- **Método**: `POST`
-- **Body** (JSON):
-    ```json
-    {
-      "email": "john@example.com",
-      "senha": "senha123"
-    }
-    ```
-
-### Logout de Usuário
-
-- **URL**: `/logout`
-- **Método**: `POST`
-- **Headers**:
-    - `user-id`: `<user-id-obtido-na-autenticacao>`
-
-### Atualização de Dados do Usuário
-
-- **URL**: `/update`
-- **Método**: `PUT`
-- **Headers**:
-    - `user-id`: `<user-id-obtido-na-autenticacao>`
-- **Body** (JSON):
-    ```json
-    {
-      "nome": "Novo Nome",
-      "senha": "novaSenha123"
-    }
-    ```
-
-### Rotas Protegidas
-
-- **URL**: `/`
-- **Método**: `GET`
-- **Headers**:
-    - `user-id`: `<user-id-obtido-na-autenticacao>`
-
-- **URL**: `/home`
-- **Método**: `GET`
-- **Headers**:
-    - `user-id`: `<user-id-obtido-na-autenticacao>`
-
-## Contato
-
-Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato.
-
----
-
-Feito por Gabriel Galli
+project-root
+│
+├── controllers
+│ ├── userController.js
+│ └── crmController.js
+│
+├── middleware
+│ └── authMiddleware.js
+│
+├── models
+│ ├── User.js
+│ └── Crm.js
+│
+├── routes
+│ └── userRoutes.js
+│
+├── .env
+├── server.js
+└── package.json
